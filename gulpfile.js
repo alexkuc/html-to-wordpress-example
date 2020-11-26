@@ -25,6 +25,24 @@ const banner = ['/*!\n',
   '\n'
 ].join('');
 
+// set WordPress stylesheet header
+const wpHeader = `/*!
+  Theme Name: <%= pkg.title %>
+  Theme URI: <%= pkg.homepage %>
+  Author: ${
+    pkg.contributors.map(i => i.match(/([A-Z]\w+)/g).join(' ')).join(', ')
+  }
+  Author URI: ${
+    pkg.contributors.map(i => i.match(/(?<=\()[\w:.\/]+(?=\))/)).join(', ')
+  }
+  Description: <%= pkg.description %>
+  Version: <%= pkg.version %>
+  License: <%= pkg.license %>
+  License URI: https://github.com/StartBootstrap/<%= pkg.name %>/blob/master/LICENSE
+  Tags: BootStrap
+*/
+`;
+
 // BrowserSync
 function browserSync(done) {
   browsersync.init({
@@ -130,9 +148,19 @@ function watchFiles() {
   gulp.watch("./**/*.html", browserSyncReload);
 }
 
+// WordPress task
+function wp() {
+  return gulp
+    .src("./wp/style.css")
+    .pipe(header(wpHeader, {
+      pkg: pkg
+    }))
+    .pipe(gulp.dest("./"));
+}
+
 // Define complex tasks
 const vendor = gulp.series(clean, modules);
-const build = gulp.series(vendor, gulp.parallel(css, js));
+const build = gulp.series(vendor, gulp.parallel(css, js, wp));
 const watch = gulp.series(build, gulp.parallel(watchFiles, browserSync));
 
 // Export tasks
@@ -143,3 +171,5 @@ exports.vendor = vendor;
 exports.build = build;
 exports.watch = watch;
 exports.default = build;
+exports.wp = wp;
+exports.wordpress = wp;
