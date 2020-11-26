@@ -6,11 +6,11 @@ class Scripts
 {
   public function __construct()
   {
-    add_action('wp_enqueue_scripts', array($this, 'addStyles'));
-    add_action('wp_enqueue_scripts', array($this, 'addScripts'));
+    add_action('wp_enqueue_scripts', [$this, 'addStyles']);
+    add_action('wp_enqueue_scripts', [$this, 'addScripts']);
   }
 
-  public function addStyles()
+  public function addStyles(): void
   {
     wp_register_style(
       'clean-blog',
@@ -43,7 +43,7 @@ class Scripts
     wp_enqueue_style('bootstrap');
   }
 
-  public function addScripts()
+  public function addScripts(): void
   {
     wp_register_script(
       'bootstrap',
