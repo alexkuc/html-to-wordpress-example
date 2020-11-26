@@ -12,7 +12,7 @@
   <?php get_template_part('template-parts/header') ?>
 
   <!-- Post Content -->
-  <?php get_template_part('template-parts/loop', 'single-post') ?>
+  <?php get_template_part('template-parts/loop', 'singular') ?>
 
   <!-- Footer -->
   <?php get_template_part('template-parts/footer') ?>
