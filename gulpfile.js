@@ -101,7 +101,7 @@ function modules() {
 // CSS task
 function css() {
   return gulp
-    .src("./scss/**/*.scss")
+    .src("./src/scss/**/*.scss")
     .pipe(plumber())
     .pipe(sass({
       outputStyle: "expanded",
@@ -145,7 +145,7 @@ function js() {
 
 // Watch files
 function watchFiles() {
-  gulp.watch(`${assetsPath}/scss/**/*`, css);
+  gulp.watch(`${assetsPath}/src/scss/**/*`, css);
   gulp.watch([`${assetsPath}/js/**/*`, `!${assetsPath}/js/**/*.min.js`], js);
   gulp.watch(`${assetsPath}/**/*.html`, browserSyncReload);
 }
