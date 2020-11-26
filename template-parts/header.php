@@ -1,4 +1,6 @@
-<header class="masthead" style="background-image: url(<?= URI . '/img/home-bg.jpg' ?>)">
+<header class="masthead" style="background-image: url(
+<?= get_the_post_thumbnail_url() ? get_the_post_thumbnail_url() : URI . '/img/home-bg.jpg' ?>
+)">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
