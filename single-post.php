@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <!-- Meta Tags -->
-  <?php get_template_part('template-parts/meta-tags') ?>
-
-  <!-- WordPress Header -->
-  <?php wp_head() ?>
-</head>
+<!-- Head -->
+<?php get_template_part('template-parts/head') ?>
 
 <body>
-
   <!-- Navigation -->
   <?php get_template_part('template-parts/navigation') ?>
 
