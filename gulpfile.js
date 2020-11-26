@@ -12,6 +12,7 @@ const plumber = require("gulp-plumber");
 const rename = require("gulp-rename");
 const sass = require("gulp-sass");
 const uglify = require("gulp-uglify");
+const fs = require('fs');
 const assetsPath = './assets';
 
 // Load package.json for banner
@@ -151,8 +152,9 @@ function watchFiles() {
 
 // WordPress task
 function wp() {
+  fs.writeFileSync('style.css', '');
   return gulp
-    .src("./wp/style.css")
+    .src("./style.css")
     .pipe(header(wpHeader, {
       pkg: pkg
     }))
