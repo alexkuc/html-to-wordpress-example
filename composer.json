@@ -1,0 +1,12 @@
+{
+    "name": "startbootstrap/startbootstrap-clean-blog",
+    "description": "Clean Blog is a Medium inspired blog theme for Bootstrap.",
+    "type": "project",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "CleanBlog\\": "./"
+        }
+    }
+}
