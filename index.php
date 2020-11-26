@@ -7,8 +7,6 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Clean Blog - Start Bootstrap Theme</title>
-
   <!-- WordPress Header -->
   <?php wp_head() ?>
 </head>
