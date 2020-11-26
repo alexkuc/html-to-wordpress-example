@@ -14,7 +14,7 @@ class Scripts
   {
     wp_register_style(
       'clean-blog',
-      URI . '/css/clean-blog.css',
+      URI . '/assets/css/clean-blog.css',
     );
     wp_enqueue_style('clean-blog');
 
@@ -58,7 +58,7 @@ class Scripts
 
     wp_register_script(
       'clean-blog',
-      URI . '/js/clean-blog.js',
+      URI . '/assets/js/clean-blog.js',
       [
         'jquery',
         'bootstrap',

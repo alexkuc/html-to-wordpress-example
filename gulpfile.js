@@ -12,6 +12,7 @@ const plumber = require("gulp-plumber");
 const rename = require("gulp-rename");
 const sass = require("gulp-sass");
 const uglify = require("gulp-uglify");
+const assetsPath = './assets';
 
 // Load package.json for banner
 const pkg = require('./package.json');
@@ -112,12 +113,12 @@ function css() {
     .pipe(header(banner, {
       pkg: pkg
     }))
-    .pipe(gulp.dest("./css"))
+    .pipe(gulp.dest(`${assetsPath}/css`))
     .pipe(rename({
       suffix: ".min"
     }))
     .pipe(cleanCSS())
-    .pipe(gulp.dest("./css"))
+    .pipe(gulp.dest(`${assetsPath}/css`))
     .pipe(browsersync.stream());
 }
 
@@ -137,15 +138,15 @@ function js() {
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('./js'))
+    .pipe(gulp.dest(`${assetsPath}/js`))
     .pipe(browsersync.stream());
 }
 
 // Watch files
 function watchFiles() {
-  gulp.watch("./scss/**/*", css);
-  gulp.watch(["./js/**/*", "!./js/**/*.min.js"], js);
-  gulp.watch("./**/*.html", browserSyncReload);
+  gulp.watch(`${assetsPath}/scss/**/*`, css);
+  gulp.watch([`${assetsPath}/js/**/*`, `!${assetsPath}/js/**/*.min.js`], js);
+  gulp.watch(`${assetsPath}/**/*.html`, browserSyncReload);
 }
 
 // WordPress task
