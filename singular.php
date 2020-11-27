@@ -12,7 +12,14 @@
   <?php get_template_part('template-parts/header') ?>
 
   <!-- Post Content -->
-  <?php get_template_part('template-parts/loop', 'singular') ?>
+  <?php
+  if (!isset($args['template-parts'])) {
+    get_template_part('template-parts/loop', 'singular');
+  }
+  if(isset($args['template-parts'])) {
+    get_template_part(...$args['template-parts']);
+  }
+  ?>
 
   <!-- Footer -->
   <?php get_template_part('template-parts/footer') ?>
